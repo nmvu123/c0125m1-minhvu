@@ -1,0 +1,129 @@
+câu 1:
+
+def nhap_mang():
+n = int(input("Nhập số lượng phần tử (tối đa 50): "))
+if n > 50 or n <= 0:
+print("Số phần tử phải từ 1 đến 50.")
+return []
+
+mang = []
+for i in range(n):
+so = int(input(f"Nhập phần tử thứ {i+1}: "))
+mang.append(so)
+
+return mang
+
+
+def tinh_trung_binh_cong(mang):
+tong = 0
+dem = 0
+for so in mang:
+if so % 3 == 0:
+tong += so
+dem += 1
+
+if dem == 0:
+return "Không có số chia hết cho 3."
+return tong / dem
+
+
+def main():
+mang = nhap_mang()
+if mang:
+print("Mảng vừa nhập:", mang)
+print("Trung bình cộng các số chia hết cho 3:", tinh_trung_binh_cong(mang))
+
+
+if __name__ == "__main__":
+main()
+
+CÂU 3:
+
+
+def la_nam_nhuan(nam):
+return (nam % 4 == 0 and nam % 100 != 0) or (nam % 400 == 0)
+
+def so_ngay_trong_thang(thang, nam):
+if thang == 2:
+return 29 if la_nam_nhuan(nam) else 28
+elif thang in [4, 6, 9, 11]:
+return 30
+else:
+return 31
+
+def main():
+thang = int(input("Nhập tháng (1-12): "))
+nam = int(input("Nhập năm: "))
+
+if 1 <= thang <= 12:
+print(f"Tháng {thang}/{nam} có {so_ngay_trong_thang(thang, nam)} ngày.")
+else:
+print("Tháng không hợp lệ!")
+
+if __name__ == "__main__":
+main()
+
+CÂU 2:
+
+def la_so_hoan_hao(n):
+return n in [6, 28, 496, 8128]  # Danh sách một số số hoàn hảo nhỏ
+
+
+def main():
+so = int(input("Nhập số nguyên dương: "))
+if so > 0:
+if la_so_hoan_hao(so):
+print(f"{so} là số hoàn hảo.")
+else:
+print(f"{so} không phải là số hoàn hảo.")
+else:
+print("Vui lòng nhập một số nguyên dương.")
+
+
+if __name__ == "__main__":
+main()
+
+
+câu 4:
+
+
+class CongNhan:
+def __init__(self, ho_ten, ngay_sinh, dia_chi, chuc_vu):
+self.ho_ten = ho_ten
+self.ngay_sinh = ngay_sinh
+self.dia_chi = dia_chi
+self.chuc_vu = chuc_vu
+
+
+def nhap_danh_sach_cong_nhan():
+danh_sach = []
+so_luong = int(input("Nhập số lượng công nhân: "))
+
+for _ in range(so_luong):
+ho_ten = input("Họ và tên: ")
+ngay_sinh = input("Ngày sinh: ")
+dia_chi = input("Địa chỉ: ")
+chuc_vu = input("Chức vụ: ")
+danh_sach.append(CongNhan(ho_ten, ngay_sinh, dia_chi, chuc_vu))
+
+return danh_sach
+
+
+def hien_thi_danh_sach(danh_sach):
+danh_sach.sort(key=lambda cn: cn.ho_ten)
+print("\nDanh sách công nhân:")
+for cn in danh_sach:
+print(f"Tên: {cn.ho_ten}, Ngày sinh: {cn.ngay_sinh}, Địa chỉ: {cn.dia_chi}, Chức vụ: {cn.chuc_vu}")
+
+
+def main():
+danh_sach = nhap_danh_sach_cong_nhan()
+hien_thi_danh_sach(danh_sach)
+
+
+if __name__ == "__main__":
+main()
+
+
+
+
